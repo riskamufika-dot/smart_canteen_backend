@@ -4,7 +4,8 @@
   "private": true,
   "description": "A Strapi application",
   "scripts": {
-    "build": "strapi build",
+    "copy-schemas": "node -e \"const fse = require('fs-extra'); ['api/about','api/article','api/author','api/category','api/global','api/home','api/menu','api/order'].forEach(p => fse.copySync('src/'+p+'/content-types', 'dist/src/'+p+'/content-types')); fse.copySync('src/components', 'dist/src/components'); fse.copySync('src/extensions', 'dist/src/extensions'); console.log('Schemas copied to dist');\"",
+    "build": "strapi build && npm run copy-schemas",
     "console": "strapi console",
     "deploy": "strapi deploy",
     "dev": "strapi develop",
